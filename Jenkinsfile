@@ -62,7 +62,7 @@ pipeline {
           steps {
             sh """
               docker build -t ${IMAGE} .
-              docker tag ${IMAGE} ${IMAGE}:${VERSION}
+              docker tag ${IMAGE} ${ACC}/${IMAGE}:${VERSION}
               docker push ${ACC}/${IMAGE}:${VERSION}
             """
           }
