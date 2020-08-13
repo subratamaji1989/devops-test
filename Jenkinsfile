@@ -42,10 +42,10 @@ pipeline {
                 }
               }
               steps {
-                git 'https://github.com/subratamaji1989/devops-test.git'
+                git url: 'https://github.com/subratamaji1989/devops-test.git'
                 script {
                   def scannerHOME = tool'SonarScanner';
-                    withSonarQubeEnv("scannerHOME") {
+                    withSonarQubeEnv("SonarQube") {
                         sh "${tool("scannerHOME")}/bin/sonar-scanner \
                         -Dsonar.projectKey=java.sample.myapp \
                         -Dsonar.projectName='JavaSample' \
