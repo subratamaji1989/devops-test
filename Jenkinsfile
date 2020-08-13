@@ -1,5 +1,9 @@
 pipeline {
-  agent master
+  agent {
+      node {
+        label 'master'
+      }
+    }
 
   options {
     timestamps()
@@ -12,7 +16,7 @@ pipeline {
   }
 
   tools {
-          maven 'Maven 3.3.9'
+          maven 'M2_HOME'
           jdk 'jdk8'
   }
       stages {
@@ -37,7 +41,11 @@ pipeline {
           }
 
         stage('Code Quality Check via SonarQube') {
-            agent SonarQube
+            agent {
+                node {
+                  label 'SonarQube'
+                }
+              }
               steps {
                 script {
                   def scannerHOME = tool'SonarScanner';
