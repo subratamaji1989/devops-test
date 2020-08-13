@@ -35,35 +35,34 @@ pipeline {
                   }
               }
           }
-      }
 
-    stage('Code Quality Check via SonarQube') {
-    agent SonarQube
-      steps {
-        script {
-		  def scannerHOME = tool'SonarScanner';
-			withSonarQubeEnv("scannerHOME") {
-			    sh "${tool("scannerHOME")}/bin/sonar-scanner \
-			    -Dsonar.projectKey=java.sample.myapp \
-			    -Dsonar.projectName='JavaSample' \
-			    -Dsonar.projectVersion=1.0.0 \
-			    -Dsonar.sources=. \
-			    -Dsonar.language=java"
-			}
-		}
-      }
-    }
+        stage('Code Quality Check via SonarQube') {
+            agent SonarQube
+              steps {
+                script {
+                  def scannerHOME = tool'SonarScanner';
+                    withSonarQubeEnv("scannerHOME") {
+                        sh "${tool("scannerHOME")}/bin/sonar-scanner \
+                        -Dsonar.projectKey=java.sample.myapp \
+                        -Dsonar.projectName='JavaSample' \
+                        -Dsonar.projectVersion=1.0.0 \
+                        -Dsonar.sources=. \
+                        -Dsonar.language=java"
+                    }
+                }
+              }
+        }
 
-	stage('Image Build and Publish') {
-      steps {
-        sh """
-          docker build -t ${IMAGE} .
-          docker tag ${IMAGE} ${IMAGE}:${VERSION}
-          docker push ${IMAGE}:${VERSION}
-        """
-      }
+        stage('Image Build and Publish') {
+          steps {
+            sh """
+              docker build -t ${IMAGE} .
+              docker tag ${IMAGE} ${IMAGE}:${VERSION}
+              docker push ${IMAGE}:${VERSION}
+            """
+          }
+        }
     }
-}
 
   post {
     success {
