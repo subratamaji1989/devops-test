@@ -11,7 +11,8 @@ pipeline {
 
   environment {
     //Use Pipeline Utility Steps plugin to read information from pom.xml into env variables
-    IMAGE = 'javaSample'
+    ACC = 'maji1989'
+    IMAGE = 'javasample'
     VERSION = '1.0'
   }
 
@@ -34,7 +35,7 @@ pipeline {
                   sh 'mvn -Dmaven.test.failure.ignore=true clean install'
               }
           }
-
+/*
         stage('Code Quality Check via SonarQube') {
             agent {
                 node {
@@ -56,13 +57,13 @@ pipeline {
                 }
               }
         }
-
+*/
         stage('Image Build and Publish') {
           steps {
             sh """
               docker build -t ${IMAGE} .
               docker tag ${IMAGE} ${IMAGE}:${VERSION}
-              docker push ${IMAGE}:${VERSION}
+              docker push ${ACC}/${IMAGE}:${VERSION}
             """
           }
         }
