@@ -42,6 +42,7 @@ pipeline {
                 }
               }
               steps {
+                git 'https://github.com/subratamaji1989/devops-test.git'
                 script {
                   def scannerHOME = tool'SonarScanner';
                     withSonarQubeEnv("scannerHOME") {
