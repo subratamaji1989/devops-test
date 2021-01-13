@@ -8,7 +8,7 @@ node() {
                                 description: '',
                                 defaultGroovyScript: """
 					def fileDel = ['cmd', '/c', "rd /s /q devops-test"].execute()
-def fileList = ['cmd', '/c', "git clone --single-branch --branch master https://github.com/subratamaji1989/devops-test.git & cd devops-test & git ls-tree -r origin/master --name-only"].execute()
+def fileList = ['cmd', '/c', "git clone --single-branch --branch master git@github.com:subratamaji1989/devops-test.git & cd devops-test & git ls-tree -r origin/master --name-only"].execute()
 fileList.waitFor()
 //return fileList.text.readLines().findAll { it.startsWith("services") }
 
@@ -39,7 +39,7 @@ return serviceList""",
                                 type: 'PT_MULTI_SELECT',
                                 groovyScript: """
 					def fileDel = ['cmd', '/c', "rd /s /q devops-test"].execute()
-def fileList = ['cmd', '/c', "git clone --single-branch --branch master https://github.com/subratamaji1989/devops-test.git & cd devops-test & git ls-tree -r origin/master --name-only"].execute()
+def fileList = ['cmd', '/c', "git clone --single-branch --branch master git@github.com:subratamaji1989/devops-test.git & cd devops-test & git ls-tree -r origin/master --name-only"].execute()
 fileList.waitFor()
 //return fileList.text.readLines().findAll { it.startsWith("services") }
 
