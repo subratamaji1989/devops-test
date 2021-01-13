@@ -1,0 +1,41 @@
+[
+  {
+    "groupID": "com.nomura.rcit.dataquality.exceptions",
+    "artifactID": "dataquality-eureka-service",
+    "rolloutVersion": "1.0.1-SNAPSHOT",
+    "rollbackVersion": "1.0.0",
+    "serviceStartName": "startDQEv2services.sh dataquality-eureka-service",
+    "serviceStopName": "stopDQEv2services.sh dataquality-eureka-service",
+    "extension": "jar",
+    "deploymentType": "dqe_v2_java",
+    "postInstallScript": "",
+    "serviceStartNameGMDS": "startDQEv2GMDSservices.sh dataquality-eureka-service",
+    "serviceStopNameGMDS": "stopDQEv2GMDSservices.sh dataquality-eureka-service"
+  },
+  {
+    "groupID": "com.nomura.rcit.dataquality.core",
+    "artifactID": "dataquality-configuration-service-propstore",
+    "rolloutVersion": "1.0.7-SNAPSHOT",
+    "rollbackVersion": "1.0.6",
+    "serviceStartName": "startDQEv2services.sh dataquality-configuration-service-propstore",
+    "serviceStopName": "stopDQEv2services.sh dataquality-configuration-service-propstore",
+    "extension": "jar",
+    "deploymentType": "dqe_v2_java",
+    "postInstallScript": "",
+    "serviceStartNameGMDS": "startDQEv2GMDSservices.sh dataquality-configuration-service-propstore",
+    "serviceStopNameGMDS": "stopDQEv2GMDSservices.sh dataquality-configuration-service-propstore"
+  },
+  {
+    "groupID": "com.nomura.rcit.dataquality.core",
+    "artifactID": "dataquality-entitlement-service-sql",
+    "rolloutVersion": "2.1.1-SNAPSHOT",
+    "rollbackVersion": "2.1.0",
+    "serviceStartName": "startDQEv2services.sh dataquality-entitlement-service-sql",
+    "serviceStopName": "stopDQEv2services.sh dataquality-entitlement-service-sql",
+    "extension": "jar",
+    "deploymentType": "dqe_v2_java",
+    "postInstallScript": "",
+    "serviceStartNameGMDS": "startDQEv2GMDSservices.sh dataquality-entitlement-service-sql",
+    "serviceStopNameGMDS": "stopDQEv2GMDSservices.sh dataquality-entitlement-service-sql"
+  }
+ ]
