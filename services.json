@@ -63,5 +63,31 @@
     "postInstallScript": "",
     "serviceStartNameGMDS": "startDQEv2GMDSservices.sh dataquality-entitlement-service-sql-1",
     "serviceStopNameGMDS": "stopDQEv2GMDSservices.sh dataquality-entitlement-service-sql-1"
+  },
+  {
+    "groupID": "com.nomura.rcit.dataquality.core.5",
+    "artifactID": "dataquality-entitlement-service-sql-5",
+    "rolloutVersion": "2.1.1-SNAPSHOT-5",
+    "rollbackVersion": "2.1.0-5",
+    "serviceStartName": "startDQEv2services.sh dataquality-entitlement-service-sql-5",
+    "serviceStopName": "stopDQEv2services.sh dataquality-entitlement-service-sql-5",
+    "extension": "jar",
+    "deploymentType": "dqe_v2_java",
+    "postInstallScript": "",
+    "serviceStartNameGMDS": "startDQEv2GMDSservices.sh dataquality-entitlement-service-sql-5",
+    "serviceStopNameGMDS": "stopDQEv2GMDSservices.sh dataquality-entitlement-service-sql-5"
+  },
+  {
+    "groupID": "com.nomura.rcit.dataquality.core.6",
+    "artifactID": "dataquality-entitlement-service-sql-6",
+    "rolloutVersion": "2.1.1-SNAPSHOT-6",
+    "rollbackVersion": "2.1.0-5",
+    "serviceStartName": "startDQEv2services.sh dataquality-entitlement-service-sql-5",
+    "serviceStopName": "stopDQEv2services.sh dataquality-entitlement-service-sql-5",
+    "extension": "jar",
+    "deploymentType": "dqe_v2_java",
+    "postInstallScript": "",
+    "serviceStartNameGMDS": "startDQEv2GMDSservices.sh dataquality-entitlement-service-sql-5",
+    "serviceStopNameGMDS": "stopDQEv2GMDSservices.sh dataquality-entitlement-service-sql-5"
   }
  ]
