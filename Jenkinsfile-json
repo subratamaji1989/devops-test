@@ -1,0 +1,75 @@
+node() {
+// read services.json file to get the list of services in Jenkins parameters
+    try {
+        properties([
+                parameters([
+                        extendedChoice(
+                                name: 'SERVICES',
+                                description: '',
+                                defaultGroovyScript: """
+					def fileDel = ['cmd', '/c', "rd /s /q devops-test"].execute()
+def fileList = ['cmd', '/c', "git clone --single-branch --branch master https://github.com/subratamaji1989/devops-test.git & cd devops-test & git ls-tree -r origin/master --name-only"].execute()
+fileList.waitFor()
+//return fileList.text.readLines().findAll { it.startsWith("services") }
+
+import groovy.json.JsonSlurper;
+String currentDir = new File("").getAbsolutePath()
+File fl = new File(currentDir + '/devops-test/services.json')
+
+def servicesJsonFile = new JsonSlurper().parse(fl)
+
+        def servicesArtifactID = servicesJsonFile.artifactID
+        def serviceArrayList = []
+        for (service in servicesArtifactID) { // loop for each service
+            serviceFound = false
+            artifactID = ""
+            rolloutVersion = ""
+            for (item in servicesJsonFile) { // get values from servicesJsonFile
+                if (service == item.artifactID) {
+                    artifactID = item.artifactID
+                    rolloutVersion = item.rolloutVersion
+                }
+            }
+            serviceArrayList.add(artifactID + "-" + rolloutVersion)
+        }
+        String serviceList = serviceArrayList.join(",")
+return serviceList""",
+                                visibleItemCount: 6,
+                                multiSelectDelimiter: ',',
+                                type: 'PT_MULTI_SELECT',
+                                groovyScript: """
+					def fileDel = ['cmd', '/c', "rd /s /q devops-test"].execute()
+def fileList = ['cmd', '/c', "git clone --single-branch --branch master https://github.com/subratamaji1989/devops-test.git & cd devops-test & git ls-tree -r origin/master --name-only"].execute()
+fileList.waitFor()
+//return fileList.text.readLines().findAll { it.startsWith("services") }
+
+import groovy.json.JsonSlurper;
+String currentDir = new File("").getAbsolutePath()
+File fl = new File(currentDir + '/devops-test/services.json')
+
+def servicesJsonFile = new JsonSlurper().parse(fl)
+
+        def servicesArtifactID = servicesJsonFile.artifactID
+        def serviceArrayList = []
+        for (service in servicesArtifactID) { // loop for each service
+            serviceFound = false
+            artifactID = ""
+            rolloutVersion = ""
+            for (item in servicesJsonFile) { // get values from servicesJsonFile
+                if (service == item.artifactID) {
+                    artifactID = item.artifactID
+                    rolloutVersion = item.rolloutVersion
+                }
+            }
+            serviceArrayList.add(artifactID + "-" + rolloutVersion)
+        }
+        String serviceList = serviceArrayList.join(",")
+return serviceList"""
+                        )
+                ])
+        ])
+    }
+    catch (error) {
+        echo "$error"
+    }
+}
